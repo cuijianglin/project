@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pbc.dao.StudentDao" >
+ <resultMap id="BaseResultMap" type="com.pbc.entity.Student" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="real_name" property="studentName" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="stu_number" property="studentNumber" jdbcType="VARCHAR" />
+    <result column="stu_school" property="schoolName" jdbcType="VARCHAR" />
+    <result column="stu_grade" property="classRoom" jdbcType="VARCHAR"/>
+    <result column="stu_national" property="peoples" jdbcType="VARCHAR"/>
+    <result column="stu_birthday" property="birthday" jdbcType="VARCHAR"/>
+    <result column="stu_other_name" property="otherName" jdbcType="VARCHAR"/>
+    <result column="stu_political_landscape" property="politicalLandscape" jdbcType="VARCHAR"/>
+    <result column="stu_hometown" property="hometown" jdbcType="VARCHAR" />
+    <result column="stu_major" property="major" jdbcType="VARCHAR" />
+    <result column="stu_idCard_number" property="idCard" jdbcType="VARCHAR" />
+    <result column="stu_phone" property="personPhone" jdbcType="VARCHAR"/>
+    <result column="stu_home_address" property="address" jdbcType="VARCHAR"/>
+    <result column="stu_home_person" property="familyPerson" jdbcType="VARCHAR"/>
+    <result column="stu_home_personPhone" property="familyPhone" jdbcType="VARCHAR"/>
+    <result column="stu_postcode" property="postcode" jdbcType="VARCHAR"/>
+    <result column="stu_poor_grades" property="povertyClass" jdbcType="VARCHAR"/>
+    <result column="stu_createFile_time" property="createFileTime" jdbcType="TIMESTAMP"/>
+    <result column="stu_photo" property="uploadImageUrl" jdbcType="VARCHAR"/>
+    <result column="status" property="status" jdbcType="VARCHAR"/>
+  </resultMap>
+    
+	<insert id="insertStudent" useGeneratedKeys="true" keyProperty="id" parameterType="com.pbc.entity.Student">
+       insert into t_student(id,real_name,sex,stu_number,stu_school,stu_grade,stu_national,stu_birthday,stu_other_name,stu_political_landscape,
+       stu_hometown,stu_major,stu_idCard_number,stu_phone,stu_home_address,stu_home_person,stu_home_personPhone,stu_postcode,stu_poor_grades,
+       stu_createFile_time,
+       stu_photo,status)
+        values(#{id},#{studentName},#{sex},#{studentNumber},#{schoolName},#{classRoom},#{peoples},#{birthday},#{otherName}
+        ,#{politicalLandscape},#{hometown},#{major},#{idCard},#{personPhone},#{address},#{familyPerson},#{familyPhone},
+        #{postcode},#{povertyClass},#{createFileTime},#{uploadImageUrl},#{status})
+                 ON DUPLICATE KEY UPDATE
+	   <trim prefix=" " prefixOverrides=",">
+	          <if test="studentName != null">,real_name=#{studentName}</if>
+              <if test="sex != null">,sex=#{sex}</if>
+              <if test="studentNumber != null">,stu_number=#{studentNumber}</if>
+              <if test="schoolName != null">,stu_school=#{schoolName}</if>
+              <if test="classRoom != null">,stu_grade=#{classRoom}</if>
+              <if test="peoples != null">,stu_national=#{peoples}</if>
+              <if test="birthday != null">,stu_birthday=#{birthday}</if>
+              <if test="otherName != null">,stu_other_name=#{otherName}</if>
+              <if test="politicalLandscape != null">,stu_political_landscape=#{politicalLandscape}</if>
+              <if test="hometown != null">,stu_hometown=#{hometown}</if>
+              <if test="major != null">,stu_major=#{major}</if>
+              <if test="idCard != null">,stu_idCard_number=#{idCard}</if>
+              <if test="personPhone != null">,stu_phone=#{personPhone}</if>
+              <if test="address != null">,stu_home_address=#{address}</if>
+              <if test="familyPerson != null">,stu_home_person=#{familyPerson}</if>
+              <if test="familyPhone != null">,stu_home_personPhone=#{familyPhone}</if>
+              <if test="postcode != null">,stu_postcode=#{postcode}</if>
+              <if test="povertyClass != null">,stu_poor_grades=#{povertyClass}</if>
+              <if test="createFileTime != null">,stu_createFile_time=#{createFileTime}</if>
+              <if test="uploadImageUrl != null">,stu_photo=#{uploadImageUrl}</if>
+              <if test="status != null">,status=#{status}</if>
+        </trim>
+        
+    </insert>
+    
+    <select id="selectStudentById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    	select * from t_student where status=1 and id=#{id}
+    </select>
+    
+    <update id="delStudentById" parameterType="java.util.Map">
+       update t_student
+          set status = #{status}
+        where id = #{id}
+    </update>
+    
+    <select id="getStudentByMap" parameterType="java.util.Map" resultMap="BaseResultMap">
+    	select * from t_student where status=1  
+    	<if test="idCard != null"> and stu_idCard_number like CONCAT(CONCAT('%', #{idCard}), '%')</if>
+    	<if test="realName != null"> and real_name like CONCAT(CONCAT('%', #{realName}), '%')</if>
+    	<if test="studentNumber != null"> and stu_number like CONCAT(CONCAT('%', #{studentNumber}), '%')</if>
+    </select>
+    <!-- <select id="getUserList" parameterType="java.util.Map" resultMap="BaseResultMap">
+    	select * 
+    	from t_user
+    	where 1=1 and status=1
+    	 <if test="userName != null"> and user_name like CONCAT(CONCAT('%', #{userName}), '%')</if>
+    	 <if test="role != null"> and role=#{role}</if>
+    	 order by update_time desc
+    	 limit #{pageIndex},#{pageSize}
+    </select>
+    
+
+     <select id="getUserCount" resultType="java.lang.Integer">
+    	select count(*) from t_user where status=1
+    </select>
+    
+    <select id="getUserById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    	select * from t_user where status=1 and id=#{userId}
+    </select>
+    
+     
+    <update id="updateUser" parameterType="com.pbc.entity.User">
+    	update t_user
+    		set id = #{id}
+    		<if test="userName != null">,user_name =#{userName}</if>
+    		<if test="role != null">,role =#{role}</if>
+    		<if test="update_time != null">,update_time =#{updateTime}</if>
+    		<if test="update_user != null">,update_user =#{updateUser}</if>
+    		where id=#{id}
+    </update>
+    
+   <update id="delStudentById" parameterType="java.util.Map">
+       update t_user
+          set status = #{status}
+        where id = #{id}
+    </update> -->
+</mapper>

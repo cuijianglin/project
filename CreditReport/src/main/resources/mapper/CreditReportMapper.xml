@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pbc.dao.CreditReportDao" >
+ <resultMap id="BaseResultMap" type="com.pbc.entity.CreditReport" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="integrity_record_first_content" property="creditRecordFirstYear" jdbcType="VARCHAR" />
+    <result column="integrity_record_second_content" property="creditRecordSecondYear" jdbcType="VARCHAR" />
+    <result column="integrity_record_thrid_content" property="creditRecordThirdYear" jdbcType="VARCHAR" />
+    <result column="integrity_record_first_people" property="creditRecordFirstRecordPerson" jdbcType="VARCHAR" />
+    <result column="integrity_record_first_time" property="creditRecordFirstDate" jdbcType="DATE"/>
+    <result column="integrity_record_second_people" property="creditRecordSecondRecordPerson" jdbcType="VARCHAR"/>
+    <result column="integrity_record_second_time" property="creditRecordSecondDate" jdbcType="DATE"/>
+    
+    <result column="integrity_record_thrid_people" property="creditRecordThridRecordPerson" jdbcType="VARCHAR"/>
+    <result column="integrity_record_thrid_time" property="creditRecordThirdDate" jdbcType="DATE"/>
+    <result column="style_study_first_content" property="studyTestFirstYear" jdbcType="VARCHAR" />
+    <result column="style_study_first_people" property="studyTestFirstRecordPerson" jdbcType="VARCHAR" />
+    <result column="style_study_first_time" property="studyTestFirstDate" jdbcType="DATE" />
+    <result column="style_study_second_content" property="studyTestSecondYear" jdbcType="VARCHAR"/>
+    <result column="style_study_second_people" property="studyTestSecondRecordPerson" jdbcType="VARCHAR"/>
+    <result column="style_study_second_time" property="studyTestSecondDate" jdbcType="DATE"/>
+    <result column="style_study_thrid_content" property="studyTestThirdYear" jdbcType="VARCHAR"/>
+    <result column="style_study_thrid_people" property="studyTestThirdRecordPerson" jdbcType="VARCHAR"/>
+    <result column="style_study_thrid_time" property="studyTestThirdDate" jdbcType="DATE"/>
+    <result column="fees_in_arrears_first_tuition" property="oweMoneyFirstStudy" jdbcType="VARCHAR"/>
+    <result column="fees_in_arrears_first_accommodation" property="oweMoneyFirstAccommodation" jdbcType="VARCHAR"/>
+    <result column="fees_in_arrears_first_otherFee" property="oweMoneyFirstOther" jdbcType="VARCHAR" />
+    <result column="fees_in_arrears_first_people" property="oweMoneyFirstRecordPerson" jdbcType="VARCHAR"/>
+    <result column="fees_in_arrears_second_tuition" property="oweMoneySecondStudy" jdbcType="VARCHAR"/>
+    <result column="fees_in_arrears_second_accommodation" property="oweMoneySecondAccommodation" jdbcType="VARCHAR"/>
+    <result column="fees_in_arrears_second_otherFee" property="oweMoneySecondOther" jdbcType="VARCHAR"/>
+    <result column="fees_in_arrears_second_people" property="oweMoneySecondRecordPerson" jdbcType="VARCHAR"/>
+    <result column="fees_in_arrears_third_tuition" property="oweMoneyThirdStudy" jdbcType="VARCHAR" />
+    <result column="fees_in_arrears_third_accommodation" property="oweMoneyThirdAccommodation" jdbcType="VARCHAR" />
+    <result column="fees_in_arrears_third_otherFee" property="oweMoneyThirdOther" jdbcType="VARCHAR" />
+    <result column="fees_in_arrears_third_people" property="oweMoneyThirdRecordPerson" jdbcType="VARCHAR"/>
+    <result column="daily_behavior_first_content" property="dailyBehaviorFirstYear" jdbcType="VARCHAR"/>
+    <result column="daily_behavior_first_people" property="dailyBehaviorFirstRecordPerson" jdbcType="VARCHAR"/>
+    <result column="daily_behavior_first_time" property="dailyBehaviorFirstDate" jdbcType="DATE"/>
+    <result column="daily_behavior_second_content" property="dailyBehaviorSecondYear" jdbcType="VARCHAR"/>
+    <result column="daily_behavior_second_people" property="dailyBehaviorSecondRecordPerson" jdbcType="VARCHAR"/>
+    <result column="daily_behavior_second_time" property="dailyBehaviorSecondDate" jdbcType="DATE"/>
+    <result column="daily_behavior_third_content" property="dailyBehaviorThirdYear" jdbcType="VARCHAR"/>
+    <result column="daily_behavior_third_people" property="dailyBehaviorThirdRecordPerson" jdbcType="VARCHAR"/>
+    <result column="daily_behavior_third_time" property="dailyBehaviorThirdDate" jdbcType="DATE" />
+    <result column="other_situation_first_content" property="otherBehaviorFirstYear" jdbcType="VARCHAR" />
+    <result column="other_situation_first_people" property="otherBehaviorFirstRecordPerson" jdbcType="VARCHAR" />
+    <result column="other_situation_first_time" property="otherBehaviorFirstDate" jdbcType="DATE"/>
+    <result column="other_situation_second_content" property="otherBehaviorSecondYear" jdbcType="VARCHAR"/>
+    <result column="other_situation_second_people" property="otherBehaviorSecondRecordPerson" jdbcType="VARCHAR"/>
+    <result column="other_situation_second_time" property="otherBehaviorSecondDate" jdbcType="DATE"/>
+    <result column="other_situation_thrid_content" property="otherBehaviorThirdYear" jdbcType="VARCHAR"/>
+    <result column="other_situation_thrid_people" property="otherBehaviorThirdRecordPerson" jdbcType="VARCHAR"/>
+    <result column="other_situation_thrid_time" property="otherBehaviorThirdDate" jdbcType="DATE"/>
+    <result column="status" property="status" jdbcType="INTEGER"/>
+  </resultMap>
+    
+	<insert id="insertCreditReport" useGeneratedKeys="true" keyProperty="id" parameterType="com.pbc.entity.Student">
+       insert into t_creditreport(id,integrity_record_first_content,integrity_record_second_content,integrity_record_thrid_content,
+       integrity_record_first_people,integrity_record_first_time,integrity_record_second_people,integrity_record_second_time,
+       integrity_record_thrid_people,integrity_record_thrid_time,style_study_first_content,style_study_first_people,
+       style_study_first_time,style_study_second_content,style_study_second_people,style_study_second_time,style_study_thrid_content,
+       style_study_thrid_people,style_study_thrid_time,fees_in_arrears_first_tuition,fees_in_arrears_first_accommodation,
+       fees_in_arrears_first_otherFee,fees_in_arrears_first_people,fees_in_arrears_second_tuition,fees_in_arrears_second_accommodation,
+       fees_in_arrears_second_otherFee,fees_in_arrears_second_people,fees_in_arrears_third_tuition,fees_in_arrears_third_accommodation,
+       fees_in_arrears_third_otherFee,fees_in_arrears_third_people,daily_behavior_first_content,daily_behavior_first_people,daily_behavior_first_time,
+       daily_behavior_second_content,daily_behavior_second_people,daily_behavior_second_time,daily_behavior_third_content,daily_behavior_third_people,
+       daily_behavior_third_time,other_situation_first_content,other_situation_first_people,other_situation_first_time,other_situation_second_content,
+       other_situation_second_people,other_situation_second_time,other_situation_thrid_content,other_situation_thrid_people,other_situation_thrid_time,
+       status)
+        values(#{id},#{creditRecordFirstYear},#{creditRecordSecondYear},#{creditRecordThirdYear},#{creditRecordFirstRecordPerson},
+        #{creditRecordFirstDate},#{creditRecordSecondRecordPerson},#{creditRecordSecondDate},#{creditRecordThridRecordPerson}
+        ,#{creditRecordThirdDate},#{studyTestFirstYear},#{studyTestFirstRecordPerson},#{studyTestFirstDate},#{studyTestSecondYear},
+        #{studyTestSecondRecordPerson},#{studyTestSecondDate},#{studyTestThirdYear},
+        #{studyTestThirdRecordPerson},#{studyTestThirdDate},#{oweMoneyFirstStudy},#{oweMoneyFirstAccommodation},
+        #{oweMoneyFirstOther},#{oweMoneyFirstRecordPerson},#{oweMoneySecondStudy},#{oweMoneySecondAccommodation}
+        ,#{oweMoneySecondOther},#{oweMoneySecondRecordPerson},#{oweMoneyThirdStudy},#{oweMoneyThirdAccommodation},#{oweMoneyThirdOther},
+        #{oweMoneyThirdRecordPerson},#{dailyBehaviorFirstYear},#{dailyBehaviorFirstRecordPerson},
+        
+        #{dailyBehaviorFirstDate},#{dailyBehaviorSecondYear},#{dailyBehaviorSecondRecordPerson},#{dailyBehaviorSecondDate},
+        #{dailyBehaviorThirdYear},#{dailyBehaviorThirdRecordPerson},#{dailyBehaviorThirdDate},#{otherBehaviorFirstYear},
+        #{otherBehaviorFirstRecordPerson},#{otherBehaviorFirstDate},#{otherBehaviorSecondYear},#{otherBehaviorSecondRecordPerson}
+        ,#{otherBehaviorSecondDate},#{otherBehaviorThirdYear},#{otherBehaviorThirdRecordPerson},#{otherBehaviorThirdDate},#{status})
+         ON DUPLICATE KEY UPDATE
+	   <trim prefix=" " prefixOverrides=",">
+	          <if test="creditRecordFirstYear != null">,integrity_record_first_content=#{creditRecordFirstYear}</if>
+              <if test="creditRecordSecondYear != null">,integrity_record_second_content=#{creditRecordSecondYear}</if>
+              <if test="creditRecordThirdYear != null">,integrity_record_thrid_content=#{creditRecordThirdYear}</if>
+              <if test="creditRecordFirstRecordPerson != null">,integrity_record_first_people=#{creditRecordFirstRecordPerson}</if>
+              <if test="creditRecordFirstDate != null">,integrity_record_first_time=#{creditRecordFirstDate}</if>
+              <if test="creditRecordSecondRecordPerson != null">,integrity_record_second_people=#{creditRecordSecondRecordPerson}</if>
+	          <if test="creditRecordSecondDate != null">,integrity_record_second_time=#{creditRecordSecondDate}</if>
+              <if test="creditRecordThridRecordPerson != null">,integrity_record_thrid_people=#{creditRecordThridRecordPerson}</if>
+              <if test="creditRecordThirdDate != null">,integrity_record_thrid_time=#{creditRecordThirdDate}</if>
+              <if test="studyTestFirstYear != null">,style_study_first_content=#{studyTestFirstYear}</if>
+              <if test="studyTestFirstRecordPerson != null">,style_study_first_people=#{studyTestFirstRecordPerson}</if>
+              <if test="studyTestFirstDate != null">,style_study_first_time=#{studyTestFirstDate}</if>
+              <if test="studyTestSecondYear != null">,style_study_second_content=#{studyTestSecondYear}</if>
+              <if test="studyTestSecondRecordPerson != null">,style_study_second_people=#{studyTestSecondRecordPerson}</if>
+              <if test="studyTestSecondDate != null">,style_study_second_time=#{studyTestSecondDate}</if>
+              <if test="studyTestThirdYear != null">,style_study_thrid_content=#{studyTestThirdYear}</if>
+              <if test="studyTestThirdRecordPerson != null">,style_study_thrid_people=#{studyTestThirdRecordPerson}</if>
+              <if test="studyTestThirdDate != null">,style_study_thrid_time=#{studyTestThirdDate}</if>
+              <if test="oweMoneyFirstStudy != null">,fees_in_arrears_first_tuition=#{oweMoneyFirstStudy}</if>
+              <if test="oweMoneyFirstAccommodation != null">,fees_in_arrears_first_accommodation=#{oweMoneyFirstAccommodation}</if>
+              <if test="oweMoneyFirstOther != null">,fees_in_arrears_first_otherFee=#{oweMoneyFirstOther}</if>
+              <if test="oweMoneyFirstRecordPerson != null">,fees_in_arrears_first_people=#{oweMoneyFirstRecordPerson}</if>
+              <if test="oweMoneySecondStudy != null">,fees_in_arrears_second_tuition=#{oweMoneySecondStudy}</if>
+              <if test="oweMoneySecondAccommodation != null">,fees_in_arrears_second_accommodation=#{oweMoneySecondAccommodation}</if>
+              <if test="oweMoneySecondOther != null">,fees_in_arrears_second_otherFee=#{oweMoneySecondOther}</if>
+	          <if test="oweMoneySecondRecordPerson != null">,fees_in_arrears_second_people=#{oweMoneySecondRecordPerson}</if>
+              <if test="oweMoneyThirdStudy != null">,fees_in_arrears_third_tuition=#{oweMoneyThirdStudy}</if>
+              <if test="oweMoneyThirdAccommodation != null">,fees_in_arrears_third_accommodation=#{oweMoneyThirdAccommodation}</if>
+              <if test="oweMoneyThirdOther != null">,fees_in_arrears_third_otherFee=#{oweMoneyThirdOther}</if>
+              <if test="oweMoneyThirdRecordPerson != null">,fees_in_arrears_third_people=#{oweMoneyThirdRecordPerson}</if>
+              <if test="dailyBehaviorFirstYear != null">,daily_behavior_first_content=#{dailyBehaviorFirstYear}</if>
+              <if test="dailyBehaviorFirstRecordPerson != null">,daily_behavior_first_people=#{dailyBehaviorFirstRecordPerson}</if>
+              <if test="dailyBehaviorFirstDate != null">,daily_behavior_first_time=#{dailyBehaviorFirstDate}</if>
+              <if test="dailyBehaviorSecondYear != null">,daily_behavior_second_content=#{dailyBehaviorSecondYear}</if>
+              <if test="dailyBehaviorSecondRecordPerson != null">,daily_behavior_second_people=#{dailyBehaviorSecondRecordPerson}</if>
+              <if test="dailyBehaviorSecondDate != null">,daily_behavior_second_time=#{dailyBehaviorSecondDate}</if>
+              <if test="dailyBehaviorThirdYear != null">,daily_behavior_third_content=#{dailyBehaviorThirdYear}</if>
+              <if test="dailyBehaviorThirdRecordPerson != null">,daily_behavior_third_people=#{dailyBehaviorThirdRecordPerson}</if>
+              <if test="dailyBehaviorThirdDate != null">,daily_behavior_third_time=#{dailyBehaviorThirdDate}</if>
+              <if test="otherBehaviorFirstYear != null">,other_situation_first_content=#{otherBehaviorFirstYear}</if>
+              <if test="otherBehaviorFirstRecordPerson != null">,other_situation_first_people=#{otherBehaviorFirstRecordPerson}</if>
+              <if test="otherBehaviorFirstDate != null">,other_situation_first_time=#{otherBehaviorFirstDate}</if>
+              <if test="otherBehaviorSecondYear != null">,other_situation_second_content=#{otherBehaviorSecondYear}</if>
+              <if test="otherBehaviorSecondRecordPerson != null">,other_situation_second_people=#{otherBehaviorSecondRecordPerson}</if>
+              <if test="otherBehaviorSecondDate != null">,other_situation_second_time=#{otherBehaviorSecondDate}</if>
+              <if test="otherBehaviorThirdYear != null">,other_situation_thrid_content=#{otherBehaviorThirdYear}</if>
+              <if test="otherBehaviorThirdRecordPerson != null">,other_situation_thrid_people=#{otherBehaviorThirdRecordPerson}</if>
+              <if test="otherBehaviorThirdDate != null">,other_situation_thrid_time=#{otherBehaviorThirdDate}</if>
+              <if test="status != null">,status=#{status}</if>
+        </trim>
+    </insert>
+    
+    <select id="selectCreditReportById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    	select * from t_creditreport where status=1 and id=#{id}
+    </select>
+    
+    <update id="delCreditReportById" parameterType="java.util.Map">
+       update t_creditreport
+          set status = #{status}
+        where id = #{id}
+    </update>
+    <!-- <select id="getUserList" parameterType="java.util.Map" resultMap="BaseResultMap">
+    	select * 
+    	from t_user
+    	where 1=1 and status=1
+    	 <if test="userName != null"> and user_name like CONCAT(CONCAT('%', #{userName}), '%')</if>
+    	 <if test="role != null"> and role=#{role}</if>
+    	 order by update_time desc
+    	 limit #{pageIndex},#{pageSize}
+    </select>
+    
+
+     <select id="getUserCount" resultType="java.lang.Integer">
+    	select count(*) from t_user where status=1
+    </select>
+    
+    <select id="getUserById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    	select * from t_user where status=1 and id=#{userId}
+    </select>
+    
+     
+    <update id="updateUser" parameterType="com.pbc.entity.User">
+    	update t_user
+    		set id = #{id}
+    		<if test="userName != null">,user_name =#{userName}</if>
+    		<if test="role != null">,role =#{role}</if>
+    		<if test="update_time != null">,update_time =#{updateTime}</if>
+    		<if test="update_user != null">,update_user =#{updateUser}</if>
+    		where id=#{id}
+    </update>
+    
+   <update id="deleteUserById" parameterType="java.util.Map">
+       update t_user
+          set status = #{status}
+        where id = #{id}
+    </update> -->
+</mapper>

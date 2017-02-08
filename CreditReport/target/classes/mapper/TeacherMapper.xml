@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pbc.dao.TeacherDao" >
+ <resultMap id="BaseResultMap" type="com.pbc.entity.Teacher" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="real_name" property="teacherName" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="tea_number" property="teacherNumber" jdbcType="VARCHAR" />
+    <result column="tea_school" property="schoolName" jdbcType="VARCHAR" />
+    <result column="tea_national" property="peoples" jdbcType="VARCHAR"/>
+    <result column="tea_birthday" property="birthday" jdbcType="VARCHAR"/>
+    <result column="tea_political_landscape" property="politicalLandscape" jdbcType="VARCHAR"/>
+    <result column="tea_hometown" property="hometown" jdbcType="VARCHAR"/>
+    <result column="tea_idCard_number" property="idCard" jdbcType="VARCHAR"/>
+    <result column="tea_phone" property="personPhone" jdbcType="VARCHAR" />
+    <result column="tea_home_address" property="address" jdbcType="VARCHAR" />
+    <result column="tea_createFile_time" property="createFileTime" jdbcType="VARCHAR" />
+    <result column="tea_photo" property="uploadImageUrl" jdbcType="VARCHAR"/>
+    <result column="status" property="status" jdbcType="VARCHAR"/>
+  </resultMap>
+    
+	<insert id="insertTeacher" useGeneratedKeys="true" keyProperty="id" parameterType="com.pbc.entity.Teacher">
+       insert into t_teacher(id,real_name,sex,tea_number,tea_school,tea_national,tea_birthday,tea_political_landscape,tea_hometown,
+       tea_idCard_number,tea_phone,tea_home_address,tea_createFile_time,tea_photo,status)
+        values(#{id},#{teacherName},#{sex},#{teacherNumber},#{schoolName},#{peoples},#{birthday},#{politicalLandscape},#{hometown}
+        ,#{idCard},#{personPhone},#{address},#{createFileTime},#{uploadImageUrl},#{status})
+                 ON DUPLICATE KEY UPDATE
+	   <trim prefix=" " prefixOverrides=",">
+	          <if test="teacherName != null">,real_name=#{teacherName}</if>
+              <if test="sex != null">,sex=#{sex}</if>
+              <if test="teacherNumber != null">,tea_number=#{teacherNumber}</if>
+              <if test="schoolName != null">,tea_school=#{schoolName}</if>
+              <if test="peoples != null">,tea_national=#{peoples}</if>
+              <if test="birthday != null">,tea_birthday=#{birthday}</if>
+              <if test="politicalLandscape != null">,tea_political_landscape=#{politicalLandscape}</if>
+              <if test="hometown != null">,tea_hometown=#{hometown}</if>
+              <if test="idCard != null">,tea_idCard_number=#{idCard}</if>
+              <if test="personPhone != null">,tea_phone=#{personPhone}</if>
+              <if test="address != null">,tea_home_address=#{address}</if>
+              <if test="createFileTime != null">,tea_createFile_time=#{createFileTime}</if>
+              <if test="uploadImageUrl != null">,tea_photo=#{uploadImageUrl}</if>
+              <if test="status != null">,status=#{status}</if>
+        </trim>
+        
+    </insert>
+    
+    <select id="selectTeacherById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    	select * from t_teacher where status=1 and id=#{id}
+    </select>
+    
+    <update id="delTeacherById" parameterType="java.util.Map">
+       update t_teacher
+          set status = #{status}
+        where id = #{id}
+    </update>
+    
+    <select id="getTeacherByMap" parameterType="java.util.Map" resultMap="BaseResultMap">
+    	select * from t_teacher where status=1  
+    	<if test="idCard != null"> and tea_idCard_number like CONCAT(CONCAT('%', #{idCard}), '%')</if>
+    	<if test="realName != null"> and real_name like CONCAT(CONCAT('%', #{realName}), '%')</if>
+    	<if test="teacherNumber != null"> and tea_number like CONCAT(CONCAT('%', #{teacherNumber}), '%')</if>
+    </select>
+  
+</mapper>

@@ -1,0 +1,117 @@
+/*閸樼喐娼�*/
+.product{
+            float: left;
+            background-color: transparent;
+            background-image: none;
+            padding: 15px 15px;
+            font-family: fontAwesome;
+            text-decoration: none;
+            color: #fff;
+            cursor: pointer;
+            font-size: 14px;
+            line-height: 1.42857143;
+        }
+        .product:hover {
+            background-color: #367fa9;
+            color: #fff;
+            border-bottom: 0 solid transparent;
+        }
+
+        .active {
+            background-color: #367fa9;
+            color: #fff;
+            border-bottom: 0 solid transparent;
+        }
+        
+        .content-header li {
+        	background: none !important;
+        }
+
+/*閸樼喐娼�*/
+
+.skin-blue .main-header .navbar{
+	position: relative;
+}
+.swiper-wrapper1{
+	display: -webkit-box;
+	
+}
+.swiper-container1{
+	margin-left: 30px;
+	margin-right: 30px;
+	
+	
+}
+.tab-box{
+	width:100%;
+	padding-left: 50px;
+	
+}
+.sidebar-toggle-new{
+	position: absolute;
+	left:0;
+	top:0;
+}
+.navbar-new{
+	position: absolute;
+	right:0;
+	top:0;
+}
+.tab-content{
+	width:100%;
+	position: relative;
+}
+.tab-left-box,.tab-right-box{
+	display: none;
+	position: absolute;
+	height:50px;
+	width:30px;
+	top:0;
+	cursor: pointer;
+}
+.tab-left-box{
+	left:0;
+}
+.tab-right-box{
+	right:0;
+}
+.tab-left,.tab-right{
+	width:9px;
+	height:17px;
+	position: absolute;
+	top:50%;
+	margin-top:-8.5px;
+	
+
+}
+.tab-left{
+	background: url('../img/tab-left.png');
+	left:10px;
+
+}
+.tab-right{
+	background: url('../img/tab-right.png');
+	right:10px;
+
+}
+.product.swiper-slide{
+	text-align: center;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

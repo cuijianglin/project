@@ -1,0 +1,65 @@
+.pages1 {
+    text-align: center;
+    height: 23px;
+    line-height: 23px;
+    vertical-align: middle;
+    margin: 20px 0;
+    font-size: 12px
+}
+
+.pages1 span {
+    display: inline-block;
+    height: 22px;
+    line-height: 22px
+}
+
+.pages1 a,.pages1 a:link,.pages1 a:visited,.pages1 a:hover {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    font-family: Arial;
+    text-decoration: none;
+    background-color: #f8f8f8;
+    color: #666;
+    margin-right: 5px;
+    border: 1px solid #e1e1e1;
+    font-weight: bold
+}
+
+.pages1 a:hover {
+    background: #cb1108;
+    border: 1px solid #be0900;
+    color: #fff
+}
+
+.pages1 a.active,.pages1 a.active:link,.pages1 a.active:visited,.pages1 a.active:hover,.pages1 a.active:active {
+    background-color: #cb1108;
+    border-color: #be0900;
+    color: #fff
+}
+
+.pages1 a.btn-page,.pages1 a.btn-page:link,.pages1 a.btn-page:visited {
+    width: 55px;
+    background: #f8f8f8;
+    border: 1px solid #e1e1e1;
+    height: 20px;
+    line-height: 20px
+}
+
+.pages1 a.btn-page:hover {
+    background: #cb1108;
+    border: 1px solid #be0900;
+    color: #fff
+}
+
+.pages1 a.btn-page_gray,.pages1 a.btn-page_gray:link,.pages1 a.btn-page_gray:visited,.pages1 a.btn-page_gray:hover {
+    width: 55px;
+    height: 22px;
+    line-height: 22px;
+    background: #e7e7e7;
+    border: 0;
+    color: #b6b6b6
+}

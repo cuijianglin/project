@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:task="http://www.springframework.org/schema/task" xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation="http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+http://www.springframework.org/schema/context 
+http://www.springframework.org/schema/context/spring-context-3.0.xsd 
+http://www.springframework.org/schema/mvc 
+http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+http://www.springframework.org/schema/task
+http://www.springframework.org/schema/task/spring-task-3.2.xsd">
+
+	<!-- 自动扫描controller包下的所有类，使其认为spring mvc的控制器 -->
+	 <context:component-scan base-package="com.pbc.controller" />  
+
+	<!-- 对模型视图名称的解析，即在模型视图名称添加前后缀 -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:prefix="/WEB-INF/views/" p:suffix=".jsp" />
+	<!-- 支持上传文件 -->  
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/> 
+	
+	<bean  
+        class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">  
+        <!-- 日期格式转换 -->  
+        <property name="webBindingInitializer">  
+            <bean class="com.pbc.ServiceUtils.DateConverter" />  
+        </property>  
+    </bean>
+	<!-- 开启注解 -->
+	<mvc:annotation-driven />
+	
+	<mvc:resources mapping="/bootstrap/**" location="/bootstrap/" />
+	<mvc:resources mapping="/css/**" location="/css/" />
+	<mvc:resources mapping="/dist/**" location="/dist/" />
+	<mvc:resources mapping="/plugins/**" location="/plugins/" />
+	<mvc:resources mapping="/fonts/**" location="/fonts/" />
+	<mvc:resources mapping="/js/**" location="/js/" />
+    
+    <!-- 拦截器，拦截url -->
+   <mvc:interceptors>
+  		<mvc:interceptor>          
+   			<mvc:mapping path="/**" />
+   			<bean class="com.pbc.interceptor.ApplicationInterceptor">
+   				<property name="uncheckUrls">
+					<list>
+						<value>/login</value>
+						<value>/signin</value>
+					</list>
+				</property>
+   			</bean>
+  		</mvc:interceptor>
+ 	</mvc:interceptors>
+ </beans>
